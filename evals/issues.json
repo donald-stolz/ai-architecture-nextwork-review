@@ -1,0 +1,137 @@
+[
+  {
+    "issue": {
+      "issue_id": "ISSUE-001",
+      "title": "Production API keys exposed in a public repository",
+      "body": "A customer found our live production API keys committed to a public repository on GitHub. The keys grant write access to customer accounts.",
+      "customer_impact": "Any holder of the keys can modify customer data."
+    },
+    "expected": {
+      "priority": "P0",
+      "routing_team": "security",
+      "requires_human_review": true
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-002",
+      "title": "Checkout fails for all customers",
+      "body": "Every checkout attempt returns a 500 error since the 09:00 UTC deploy. No orders have completed since then.",
+      "customer_impact": "All customers in every region are unable to complete payment."
+    },
+    "expected": {
+      "priority": "P0",
+      "routing_team": "payments",
+      "requires_human_review": true
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-003",
+      "title": "User can view another tenant's invoices",
+      "body": "A user reports that changing the account ID in the URL shows invoices belonging to another tenant. This looks like a possible authorization bypass.",
+      "customer_impact": "Confidential billing data may be visible across accounts."
+    },
+    "expected": {
+      "priority": "P1",
+      "routing_team": "security",
+      "requires_human_review": true
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-004",
+      "title": "Widespread login failures",
+      "body": "Users are seeing 'session could not be created' errors on the sign-in page. Support has received hundreds of reports in the last hour.",
+      "customer_impact": "Many customers across multiple regions cannot log in."
+    },
+    "expected": {
+      "priority": "P1",
+      "routing_team": "reliability",
+      "requires_human_review": true
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-005",
+      "title": "Webhook deliveries rejected after secret rotation",
+      "body": "We rotated our webhook signing secret yesterday and now every order webhook delivery is rejected with a signature mismatch.",
+      "customer_impact": "One merchant's order sync is delayed."
+    },
+    "expected": {
+      "priority": "P2",
+      "routing_team": "platform",
+      "requires_human_review": false
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-006",
+      "title": "Dashboard is slow in eu-west",
+      "body": "Since Monday the analytics dashboard takes around 20 seconds to render for accounts hosted in eu-west. Other regions are unaffected.",
+      "customer_impact": "Some customers in one region wait longer for reports."
+    },
+    "expected": {
+      "priority": "P2",
+      "routing_team": "reliability",
+      "requires_human_review": false
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-007",
+      "title": "Invoice total does not match line items",
+      "body": "The March invoice for one customer shows a total that is 12 dollars higher than the sum of its line items.",
+      "customer_impact": "One customer was overcharged and is asking for a correction."
+    },
+    "expected": {
+      "priority": "P2",
+      "routing_team": "payments",
+      "requires_human_review": false
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-008",
+      "title": "OAuth documentation lists the wrong redirect parameter",
+      "body": "The OAuth authorization documentation tells developers to send redirect_url, but the API expects redirect_uri.",
+      "customer_impact": "Developers lose time during setup."
+    },
+    "expected": {
+      "priority": "P3",
+      "routing_team": "product-support",
+      "requires_human_review": false
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-009",
+      "title": "Feature request: dark mode",
+      "body": "Several users would like a dark mode option for the web app.",
+      "customer_impact": "No current disruption."
+    },
+    "expected": {
+      "priority": "P3",
+      "routing_team": "product-support",
+      "requires_human_review": false
+    }
+  },
+  {
+    "issue": {
+      "issue_id": "ISSUE-010",
+      "title": "Export admin activity history for annual review",
+      "body": "Our compliance team needs a copy of admin activity history for the last 12 months.",
+      "customer_impact": "No current disruption.",
+      "human_override": {
+        "priority": "P1",
+        "routing_team": "security",
+        "reason": "Audit review requested by the security lead; handle as a security investigation."
+      }
+    },
+    "expected": {
+      "priority": "P1",
+      "routing_team": "security",
+      "requires_human_review": true
+    }
+  }
+]
