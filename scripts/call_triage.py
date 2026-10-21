@@ -9,14 +9,13 @@ import urllib.request
 
 TRIAGE_URL = "http://127.0.0.1:8000/triage"
 
-# A global checkout outage: the deterministic policy should treat this as P0.
+# A critical credential exposure should stay at P0
 DEMO_ISSUE = {
     "issue_id": "DEMO-001",
-    "title": "Checkout is down for all customers",
-    "body": "Every checkout attempt fails with a 500 error after the latest deploy.",
-    "customer_impact": "All customers in every region are unable to complete payment.",
+    "title": "Production API credentials exposed",
+    "body": "Leaked credentials were found in a public repository.",
+    "customer_impact": "Customer data may be accessible with the exposed credentials.",
 }
-
 
 def main() -> None:
     request = urllib.request.Request(

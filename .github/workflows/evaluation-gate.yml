@@ -2,7 +2,10 @@ name: Evaluation Gate
 
 # Manual only while the starter evaluations are intentionally failing.
 # TODO: Add push and pull_request triggers when the implementation is complete.
+# Run the completed gate for code changes and manual checks
 on:
+  push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -21,4 +24,5 @@ jobs:
       # Evaluations use frozen fixtures and a stub provider, so no Gemini secret is needed.
       # TODO: Add evals.test_tier_b to the evaluation command.
       - name: Run evaluations
-        run: python -m unittest -v evals.test_tier_a
+        # Run deterministic and stubbed model-assisted evaluations
+        run: python -m unittest -v evals.test_tier_a evals.test_tier_b
